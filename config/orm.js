@@ -10,7 +10,7 @@ var path = require('path')
 
 var ORM = {
     selectAll: function(cb) {
-        var query = "SELECT * FROM `burgers_db`.`burgers` LIMIT 0, 100;";
+        var query = 'SELECT * FROM `burgers`;';
         cxs.query(query, (err, res, flds) => {
             if (!err) {
                 return cb(res);
@@ -21,7 +21,7 @@ var ORM = {
     },
     insertOne: function(name, cb) {
         // Create a new
-        var query = "INSERT INTO `burgers_db`.`burgers` (`name`) VALUES (?);";
+        var query = "INSERT INTO `hr0vdec8yom4q8ik`.`burgers` (`burger_name`) VALUES (?);";
         cxs.query(query, [ name ], (err, res, flds) => {
             if (! err) {
                 return cb(res.insertId);
@@ -32,7 +32,7 @@ var ORM = {
     },
     updateOne: function(id, cb) {
         // Mark the record with ID=? as devoured
-        var query = "UPDATE `burgers_db`.`burgers` SET `devoured`=1 WHERE `id`=?";
+        var query = "UPDATE `hr0vdec8yom4q8ik`.`burgers` SET `is_devoured`=1 WHERE `id`=?";
         cxs.query(query, [ id ], (err, res, flds) => {
             if (!err && res.affectedRows) {
                 return cb(true);
@@ -43,7 +43,7 @@ var ORM = {
     },
     regurgitateBurgers: function(cb) {
 
-        var query = "UPDATE `burgers_db`.`burgers` SET `devoured`=0 WHERE `devoured`=1";
+        var query = "UPDATE `hr0vdec8yom4q8ik`.`burgers` SET `is_devoured`=0 WHERE `is_devoured`=1";
         cxs.query(query, (err, res, flds) => {
             if (!err) {
                 return cb(res.affectedRows);

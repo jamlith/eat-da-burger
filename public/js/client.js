@@ -64,7 +64,7 @@ function devour(id) {
     $.getJSON('/burgers', (data) => {
         if (data.length) {
             for (var i = 0; i < data.length; i++) {
-                listBurger(data[i].id, data[i].name, data[i].devoured);
+                listBurger(data[i].id, data[i].burger_name, data[i].is_devoured);
             }
         }
     });
